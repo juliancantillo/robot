@@ -52,3 +52,39 @@ while True:
 
     time.sleep(1)
     pass
+
+calculate_pwm(value):
+    return (value * 5) + 50
+
+while True:
+
+    right_distance = sensors.get_right_sensor()
+    left_distance = sensors.get_left_sensor()
+    center_distance = sensors.get_center_sensor()
+
+    if center_distance < 3.0:
+
+        if right_distance < left_distance:
+            motors.turn_left()
+            continue
+
+        motors.turn_right()
+        continue
+
+    if right_distance < 10.0:
+        motors.set_right_pwm(calculate_pwm(right_distance))
+        continue
+
+    if left_distance < 10.0:
+        motors.set_left_pwm(calculate_pwm(left_distance))
+        continue
+
+    if right_distance >= 10.0:
+        motors.set_right_pwm(100)
+        continue
+
+    if left_distance >= 10.0:
+        motors.set_left_pwm(100)
+        continue
+
+    motors.go_backward()
