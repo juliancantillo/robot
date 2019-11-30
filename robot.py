@@ -3,6 +3,7 @@ import time
 
 import motion.motors as motors
 
+motors.setup_motors()
 
 cmd = ""
 while True:
