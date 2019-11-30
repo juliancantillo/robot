@@ -35,13 +35,13 @@ class Ultrasonic:
         pass
 
     def get_right_sensor(self):
-        return self.get_distance(trigger=self.SENSOR_0_TRIGGER, echo=self.SENSOR_0_ECHO)
+        return self.get_distance(self.SENSOR_0_TRIGGER, self.SENSOR_0_ECHO)
 
     def get_left_sensor(self):
-        return self.get_distance(trigger=self.SENSOR_2_TRIGGER, echo=self.SENSOR_2_ECHO)
+        return self.get_distance(self.SENSOR_2_TRIGGER, self.SENSOR_2_ECHO)
 
     def get_center_sensor(self):
-        return self.get_distance(trigger=self.SENSOR_1_TRIGGER, echo=self.SENSOR_1_ECHO)
+        return self.get_distance(self.SENSOR_1_TRIGGER, self.SENSOR_1_ECHO)
 
     def get_distance(self, trigger, echo):
         """
