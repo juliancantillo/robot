@@ -53,7 +53,7 @@ while True:
     time.sleep(1)
     pass
 
-calculate_pwm(value):
+def calculate_pwm(value):
     return (value * 5) + 50
 
 while True:
