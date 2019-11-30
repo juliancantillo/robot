@@ -61,6 +61,8 @@ while True:
     left_distance = sensors.get_left_sensor()
     center_distance = sensors.get_center_sensor()
 
+    print "Distance values R={} C={} L={}".format(right_distance, center_distance, left_distance)
+
     if center_distance < 3.0:
 
         if right_distance < left_distance:
@@ -72,18 +74,15 @@ while True:
 
     if right_distance < 10.0:
         motors.set_right_pwm(calculate_pwm(right_distance))
-        continue
 
     if left_distance < 10.0:
         motors.set_left_pwm(calculate_pwm(left_distance))
-        continue
 
     if right_distance >= 10.0:
         motors.set_right_pwm(100)
-        continue
 
     if left_distance >= 10.0:
         motors.set_left_pwm(100)
-        continue
 
+    print "Moving forward"
     motors.go_forward()
