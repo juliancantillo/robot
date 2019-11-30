@@ -1,9 +1,13 @@
 import RPi.GPIO as GPIO
 import time
 
-import motion.motors as motors
+import motion.motors as controller
 
-motors.setup_motors()
+GPIO.setwarnings(False)
+GPIO.setmode(GPIO.BCM)
+GPIO.cleanup()
+
+motors = controller.Motors()
 
 cmd = ""
 while True:
