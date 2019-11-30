@@ -63,7 +63,19 @@ while True:
 
     print "Distance values R={} C={} L={}".format(right_distance, center_distance, left_distance)
 
-    if center_distance < 3.0:
+    if center_distance < 4.0:
+        motors.go_backward()
+        continue
+
+    if right_distance < 4.0:
+        motors.turn_left()
+        continue
+
+    if left_distance < 4.0:
+        motors.turn_right()
+        continue
+
+    if center_distance < 7.0:
 
         if right_distance < left_distance:
             motors.turn_left()
