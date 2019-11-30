@@ -2,7 +2,7 @@ import RPi.GPIO as GPIO
 import time
 
 import motion.motors as controller
-import sensors.ultrasonic
+import sensors.ultrasonic as ultrasonic
 
 GPIO.setwarnings(False)
 GPIO.setmode(GPIO.BCM)
@@ -19,13 +19,13 @@ while True:
     cmd_substr = cmd[0]
 
     if cmd_substr == "z":
-        sensor.get_right_sensor()
+        sensors.get_right_sensor()
         continue
     if cmd_substr == "x":
-        sensor.get_left_sensor()
+        sensors.get_left_sensor()
         continue
     if cmd_substr == "c":
-        sensor.get_center_sensor()
+        sensors.get_center_sensor()
         continue
 
     if cmd_substr == "l":
