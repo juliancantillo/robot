@@ -1,71 +1,74 @@
 import RPi.GPIO as GPIO
 import time
 
-# Ultrasonic Sensors
-SENSOR_0_TRIGGER = 23
-SENSOR_0_ECHO = 24
+class Ultrasonic:
 
-SENSOR_1_TRIGGER = 18
-SENSOR_1_ECHO = 17
+    # Ultrasonic Sensors
+    SENSOR_0_TRIGGER = 23
+    SENSOR_0_ECHO = 24
 
-SENSOR_2_TRIGGER = 22
-SENSOR_2_ECHO = 27
+    SENSOR_1_TRIGGER = 18
+    SENSOR_1_ECHO = 17
 
-def setup_sensors():
-    GPIO.setwarnings(False)
-    GPIO.setmode(GPIO.BCM)
-    GPIO.cleanup()
+    SENSOR_2_TRIGGER = 22
+    SENSOR_2_ECHO = 27
 
-    # Setup Sensor 0
-    GPIO.setup(SENSOR_0_TRIGGER, GPIO.OUT)
-    GPIO.output(SENSOR_0_TRIGGER, GPIO.LOW)
+    def __init__(self):
+        # Setup Sensor 0
+        GPIO.setup(self.SENSOR_0_TRIGGER, GPIO.OUT)
+        GPIO.output(self.SENSOR_0_TRIGGER, GPIO.LOW)
 
-    GPIO.setup(SENSOR_0_ECHO, GPIO.IN)
+        GPIO.setup(self.SENSOR_0_ECHO, GPIO.IN)
 
-    # Setup Sensor 1
-    GPIO.setup(SENSOR_1_TRIGGER, GPIO.OUT)
-    GPIO.output(SENSOR_1_TRIGGER, GPIO.LOW)
+        # Setup Sensor 1
+        GPIO.setup(self.SENSOR_1_TRIGGER, GPIO.OUT)
+        GPIO.output(self.SENSOR_1_TRIGGER, GPIO.LOW)
 
-    GPIO.setup(SENSOR_1_ECHO, GPIO.IN)
+        GPIO.setup(self.SENSOR_1_ECHO, GPIO.IN)
 
-    # Setup Sensor 2
-    GPIO.setup(SENSOR_2_TRIGGER, GPIO.OUT)
-    GPIO.output(SENSOR_2_TRIGGER, GPIO.LOW)
+        # Setup Sensor 2
+        GPIO.setup(self.SENSOR_2_TRIGGER, GPIO.OUT)
+        GPIO.output(self.SENSOR_2_TRIGGER, GPIO.LOW)
 
-    GPIO.setup(SENSOR_2_ECHO, GPIO.IN)
+        GPIO.setup(self.SENSOR_2_ECHO, GPIO.IN)
 
-    pass
-
-
-
-def get_distance(trigger, echo):
-    """
-    Returns the sensor distance
-    """
-    GPIO.output(trigger, GPIO.HIGH)
-    time.sleep(0.00001)
-    GPIO.output(trigger, GPIO.LOW)
-
-    while GPIO.input(echo) == 0:
-        #print "PIN {0} == 0".format(echo)
         pass
-    start = time.time()
 
-    while GPIO.input(echo) == 1:
-        #print "PIN {0} == 1".format(echo)
-        pass
-    stop = time.time()
+    def get_right_sensor(self):
+        return get_distance(trigger=self.SENSOR_0_TRIGGER, echo=self.SENSOR_0_ECHO)
 
-    return (stop - start) * 17000
+    def get_left_sensor(self):
+        return get_distance(trigger=self.SENSOR_2_TRIGGER, echo=self.SENSOR_2_ECHO)
+
+    def get_center_sensor(self):
+        return get_distance(trigger=self.SENSOR_1_TRIGGER, echo=self.SENSOR_1_ECHO)
+
+    def get_distance(trigger, echo):
+        """
+        Returns the sensor distance
+        """
+        GPIO.output(trigger, GPIO.HIGH)
+        time.sleep(0.00001)
+        GPIO.output(trigger, GPIO.LOW)
+
+        while GPIO.input(echo) == 0:
+            pass
+        start = time.time()
+
+        while GPIO.input(echo) == 1:
+            pass
+        stop = time.time()
+
+        return (stop - start) * 17000
 
 
-# print "Starting Measurement SENSOR[0]..."
-# print get_distance(SENSOR_0_TRIGGER, SENSOR_0_ECHO)
+    # print "Starting Measurement SENSOR[0]..."
+    # print get_distance(self.SENSOR_0_TRIGGER, self.SENSOR_0_ECHO)
 
-# print "Starting Measurement SENSOR[1]..."
-# print get_distance(SENSOR_1_TRIGGER, SENSOR_1_ECHO)
+    # print "Starting Measurement SENSOR[1]..."
+    # print get_distance(self.SENSOR_1_TRIGGER, self.SENSOR_1_ECHO)
 
-# print "Starting Measurement SENSOR[2]..."
-# print get_distance(SENSOR_2_TRIGGER, SENSOR_2_ECHO)
+    # print "Starting Measurement SENSOR[2]..."
+    # print get_distance(self.SENSOR_2_TRIGGER, self.SENSOR_2_ECHO)
 
-# GPIO.cleanup()
+    # GPIO.cleanup()

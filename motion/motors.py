@@ -80,3 +80,15 @@ class Motors:
         GPIO.output(self.MOTOR_RIGHT_2, GPIO.LOW)
         time.sleep(1)
         pass
+
+    def set_left_pwm(self, value):
+        self.MOTOR_LEFT_PWM = value
+        self.leftMotor.ChangeDutyCycle(value)
+        pass
+
+    def set_right_pwm(self, value):
+        self.MOTOR_RIGHT_PWM = value
+        self.rightMotor.ChangeDutyCycle(value)
+        pass
+
+
