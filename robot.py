@@ -1,7 +1,7 @@
 import RPi.GPIO as GPIO
 import time
 
-import motors
+import motion.motors as motors
 
 
 cmd = ""
