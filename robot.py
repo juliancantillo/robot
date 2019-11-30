@@ -54,6 +54,8 @@ while True:
 def calculate_pwm(value):
     return (value * 5) + 50
 
+motors.set_right_pwm(90)
+motors.set_left_pwm(90)
 
 while True:
 
@@ -84,17 +86,17 @@ while True:
         motors.turn_right()
         continue
 
-    if right_distance < 10.0:
-        motors.set_right_pwm(calculate_pwm(right_distance))
+    #if right_distance < 10.0:
+    #    motors.set_right_pwm(calculate_pwm(right_distance))
 
-    if left_distance < 10.0:
-        motors.set_left_pwm(calculate_pwm(left_distance))
+    #if left_distance < 10.0:
+    #    motors.set_left_pwm(calculate_pwm(left_distance))
 
-    if right_distance >= 10.0:
-        motors.set_right_pwm(100)
+    #if right_distance >= 10.0:
+    #    motors.set_right_pwm(100)
 
-    if left_distance >= 10.0:
-        motors.set_left_pwm(100)
+    #if left_distance >= 10.0:
+    #    motors.set_left_pwm(100)
 
     print "Moving forward"
     motors.go_forward()
