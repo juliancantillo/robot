@@ -6,7 +6,6 @@ import sensors.ultrasonic as ultrasonic
 
 GPIO.setwarnings(False)
 GPIO.setmode(GPIO.BCM)
-GPIO.cleanup()
 
 motors = controller.Motors()
 sensors = ultrasonic.Ultrasonic()
@@ -47,7 +46,6 @@ while True:
         motors.set_right_pwm(float(cmd[1:]))
         continue
     if cmd_substr == "e":
-        GPIO.cleanup()
         break
 
     time.sleep(1)
@@ -56,9 +54,6 @@ while True:
 def calculate_pwm(value):
     return (value * 5) + 50
 
-GPIO.setwarnings(False)
-GPIO.setmode(GPIO.BCM)
-GPIO.cleanup()
 
 while True:
 
@@ -91,4 +86,4 @@ while True:
         motors.set_left_pwm(100)
         continue
 
-    motors.go_backward()
+    motors.go_forward()
