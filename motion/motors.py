@@ -51,7 +51,6 @@ class Motors:
 
         GPIO.output(self.MOTOR_RIGHT_1, GPIO.HIGH)
         GPIO.output(self.MOTOR_RIGHT_2, GPIO.LOW)
-        time.sleep(1)
         pass
 
     def go_forward(self):
@@ -60,7 +59,6 @@ class Motors:
 
         GPIO.output(self.MOTOR_RIGHT_1, GPIO.LOW)
         GPIO.output(self.MOTOR_RIGHT_2, GPIO.HIGH)
-        time.sleep(1)
         pass
 
     def turn_left(self):
@@ -69,7 +67,6 @@ class Motors:
 
         GPIO.output(self.MOTOR_RIGHT_1, GPIO.LOW)
         GPIO.output(self.MOTOR_RIGHT_2, GPIO.HIGH)
-        time.sleep(1)
         pass
 
     def turn_right(self):
@@ -78,7 +75,6 @@ class Motors:
 
         GPIO.output(self.MOTOR_RIGHT_1, GPIO.HIGH)
         GPIO.output(self.MOTOR_RIGHT_2, GPIO.LOW)
-        time.sleep(1)
         pass
 
     def set_left_pwm(self, value):
