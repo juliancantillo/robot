@@ -56,6 +56,10 @@ while True:
 def calculate_pwm(value):
     return (value * 5) + 50
 
+GPIO.setwarnings(False)
+GPIO.setmode(GPIO.BCM)
+GPIO.cleanup()
+
 while True:
 
     right_distance = sensors.get_right_sensor()
