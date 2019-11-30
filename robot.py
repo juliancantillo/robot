@@ -19,13 +19,13 @@ while True:
     cmd_substr = cmd[0]
 
     if cmd_substr == "z":
-        sensors.get_right_sensor()
+        print "Right sensor {}".format(sensors.get_right_sensor())
         continue
     if cmd_substr == "x":
-        sensors.get_left_sensor()
+        print "Left sensor {}".format(sensors.get_left_sensor())
         continue
     if cmd_substr == "c":
-        sensors.get_center_sensor()
+        print "Middle sensor {}".format(sensors.get_center_sensor())
         continue
 
     if cmd_substr == "l":
