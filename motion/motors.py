@@ -19,7 +19,7 @@ class Motors:
     leftMotor =  None
     rightMotor = None
 
-    def __initi__(self):
+    def __init__(self):
 
         GPIO.setup(self.MOTOR_LEFT_1, GPIO.OUT)
         GPIO.output(self.MOTOR_LEFT_1, GPIO.LOW)
